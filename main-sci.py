@@ -1,5 +1,5 @@
 import os, sys, pygame, json
-from random import choice, choices, randint
+from random import choice,  randint
 
 
 
@@ -130,8 +130,6 @@ class Display(object):
 
     win_addtion = []
 
-    show = False
-
     level = 1
 
 
@@ -196,9 +194,9 @@ class Display(object):
                 if rendom_qus not in QUS_RANDOM:
                     QUS_RANDOM.append(rendom_qus)
                     return rendom_qus
-                else:
-                    rendom_qus = choice(QUS)
-        
+                rendom_qus = choice(QUS)
+            else:
+                self.update_random_qus()
 
     def game_loop(self):
 
@@ -208,7 +206,9 @@ class Display(object):
 
         element_obj = Elements()
         element_obj.aixc()
-        self.update_qus()
+
+        if QUS == []:
+            self.update_qus()
 
         QUS_RANDOM.clear()
         self.rendom_qus = choice(QUS)
@@ -303,7 +303,6 @@ class Display(object):
         with open("ElementConntion.json") as file:
                 data = json.load(file)
         if len(data) == len(QUS_RANDOM):
-            print("Winer")
             self.show_winer_text()
 
     def show_winer_text(self):
@@ -421,4 +420,5 @@ class Display(object):
         
 
 
-Display()
+if __name__ == "__main__":
+    Display()
