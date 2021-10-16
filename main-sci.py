@@ -143,7 +143,9 @@ class Display(object):
         pygame.mouse.set_visible(True)
 
         self.display = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
-        pygame.display.set_caption("Element Finder")
+        pygame.display.set_caption("Bonding Of Elements")
+        windowIcon = pygame.image.load("./packges/items/image/boe.png")
+        pygame.display.set_icon(windowIcon)
 
         self.viewing_value_one = [self.display.get_width() // 2 - 100, self.display.get_height() // 2 - 120]
         self.viewing_value_two = [self.display.get_width() // 2, self.display.get_height() // 2 - 120]
