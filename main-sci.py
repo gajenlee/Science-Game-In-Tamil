@@ -1,5 +1,6 @@
 import os, sys, pygame, json
 from random import choice,  randint
+from pygame import mixer
 
 
 
@@ -77,6 +78,8 @@ class GameThings(object):
             pygame.draw.rect(surface, ACTIVE_BLUE, (pos_x, pos_y, width, height), 3)
 
             if click[0] == 1 and action != None:
+                click_sound = mixer.Sound("packges/items/sounds/click.wav")
+                click_sound.play()
                 action()
         
         else:
@@ -92,6 +95,8 @@ class GameThings(object):
             pygame.draw.rect(surface, activeColor, (pos_x, pos_y, width, height), border_radius= 10)
 
             if click[0] == 1 and action != None:
+                click_sound = mixer.Sound("packges/items/sounds/click.wav")
+                click_sound.play()
                 action()
         
         else:
@@ -158,6 +163,9 @@ class Display(object):
     
     def game_startter(self):
         run = True
+
+        start_sound = mixer.Sound("packges/items/sounds/laun.wav")
+        start_sound.play()
 
         while run:
             self.display.blit(self.bg, (0, 0))
@@ -274,8 +282,14 @@ class Display(object):
                     self.draw_image_paths.clear()
                     self.draw_images.clear()
                     self.level += 1
-                
+
+                    level_sound = mixer.Sound("packges/items/sounds/completion-level.wav")
+                    level_sound.play()
+
                     self.rendom_qus = self.update_random_qus()
+                    if self.rendom_qus == None:
+                        self.rendom_qus = self.update_random_qus()
+                    
 
                 else:
                     self.draw_images.clear()
@@ -310,7 +324,7 @@ class Display(object):
             self.display.blit(self.bg, (0, 0))
             self.make_button_icon_msg(self.display, "packges/items/image/icon/cil-x.png", "Exit", self.display.get_width()//2 - 100 , self.display.get_height() - 200, 100, 40, NORMAL_RED, ACTIVE_RED, self.exit)
             self.make_button_icon_msg(self.display, "packges/items/image/icon/cil-reload.png", "Play", self.display.get_width()//2 + 10 , self.display.get_height() - 200, 100, 40, NORMAL_GREEN, ACTIVE_GREEN, self.rerun_game_loop)
-            self.things.normal_text(self.display, "ePq;fs; jhd; Ntw;wpahsH", ACTIVE_GREEN, 100, self.display.get_width() // 2, self.display.get_height() - 400, self.tamil_font)
+            self.things.normal_text(self.display, "ePq;fs; midj;J fl;lq;fisAk; Kbj;J tpl;BHfs;", ACTIVE_GREEN, 50, self.display.get_width() // 2, self.display.get_height() - 400, self.tamil_font)
             self.things.normal_text(self.display, "vLj;Jf;nfhz;l Neuk;: " + str(self.currect_time) + " tpdhbfs;", WHITE, 30, self.display.get_width() // 2, self.display.get_height() - 300, self.tamil_font)
 
             if self.currect_time <= 20:
@@ -346,6 +360,7 @@ class Display(object):
 
     def mouse_hit(self, xpos, ypos, index):
         mouse = pygame.mouse.get_pos()
+        click = pygame.mouse.get_pressed()
         if (xpos + IMAGE_SIZE) >= mouse[0] >= xpos and (ypos + IMAGE_SIZE) >= mouse[1] >= ypos:
             pygame.draw.rect(self.display, ACTIVE_BLUE, (xpos, ypos, 100, 100), 4, border_radius=20)
             if self.draw_images != []:
@@ -358,6 +373,10 @@ class Display(object):
             else:
                 self.draw_images.append(ELEMENT_IMAGE_OBJECT[index])
                 self.draw_image_paths.append(ELEMENT_IMAGE_PATH[index])
+            
+            if click[0] == 1:
+                    click_sound = mixer.Sound("packges/items/sounds/click.wav")
+                    click_sound.play()
 
 
     def check_images(self, element_list:list, user_element:list) -> bool:
@@ -384,6 +403,8 @@ class Display(object):
                 pygame.draw.rect(surface, activeColor, (pos_x, pos_y, width, height), border_radius= 15)
 
                 if click[0] == 1 and action != None:
+                    click_sound = mixer.Sound("packges/items/sounds/click.wav")
+                    click_sound.play()
                     action()
             
             else:
@@ -398,6 +419,8 @@ class Display(object):
             surface.blit(image, (pos_x + (width // 2) - 45,  pos_y + (height // 2) - 10))
 
     def game_end(self):
+        game_over_sound = mixer.Sound("packges/items/sounds/game-over.wav")
+        game_over_sound.play()
         while True:
             self.display.blit(self.bg, (0, 0))
             self.make_button_icon_msg(self.display, "packges/items/image/icon/cil-x.png", "Exit", self.display.get_width()//2 - 100 , self.display.get_height() - 200, 100, 40, NORMAL_RED, ACTIVE_RED, self.exit)
