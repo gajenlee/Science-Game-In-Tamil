@@ -1,28 +1,26 @@
 {
-    "Element": [
-        [
-            "./packges/items/image/elements/H2.png",
-            "./packges/items/image/elements/O.png"
-        ],
-        [
-            "./packges/items/image/elements/H.png",
-            "./packges/items/image/elements/Cl.png"
-        ],
-        [
-            "./packges/items/image/elements/C.png",
-            "./packges/items/image/elements/O2.png"
-        ],
-        [
-            "./packges/items/image/elements/C.png",
-            "./packges/items/image/elements/H4.png"
-        ],
-        [
-            "./packges/items/image/elements/N.png",
-            "./packges/items/image/elements/H3.png"
-        ],
-        [
-            "./packges/items/image/elements/Na.png",
-            "./packges/items/image/elements/Cl.png"
-        ]
+    "fhgdPnuhl;irl;L": [
+        "./packges/items/image/elements/C.png",
+        "./packges/items/image/elements/O2.png"
+    ],
+    "jz;zPu; ( ePH )": [
+        "./packges/items/image/elements/H2.png",
+        "./packges/items/image/elements/O.png"
+    ],
+    "mNkhdpahk;": [
+        "./packges/items/image/elements/N.png",
+        "./packges/items/image/elements/H3.png"
+    ],
+    "kPj;Njd; (nkNjd;)": [
+        "./packges/items/image/elements/C.png",
+        "./packges/items/image/elements/H4.png"
+    ],
+    "Nrhbak; Fnshiul;L (cg;G)": [
+        "./packges/items/image/elements/Na.png",
+        "./packges/items/image/elements/Cl.png"
+    ],
+    "Ijrud; FNshiul;L": [
+        "./packges/items/image/elements/H.png",
+        "./packges/items/image/elements/Cl.png"
     ]
 }
