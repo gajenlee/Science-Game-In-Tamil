@@ -153,7 +153,6 @@ class Display(object):
         
         # Clock
         self.clock = pygame.time.Clock()
-        self.currect_time = 0
 
 
         self.game_startter()
@@ -193,13 +192,12 @@ class Display(object):
     def update_random_qus(self):
         rendom_qus = choice(QUS)
         if QUS_RANDOM != []:
-            for i in range(len(QUS)):
+            for _ in range(len(QUS)):
                 if rendom_qus not in QUS_RANDOM:
                     QUS_RANDOM.append(rendom_qus)
                     return rendom_qus
                 else:
                     rendom_qus = choice(QUS)
-            
         
 
     def game_loop(self):
@@ -219,6 +217,7 @@ class Display(object):
         
         
         self.level = 1
+        self.start_time = pygame.time.get_ticks()
 
         while True:
             self.display.blit(self.bg, (0, 0))
@@ -261,7 +260,6 @@ class Display(object):
             self.find_winer()
 
             # Qus
-            print(self.rendom_qus)
             self.things.normal_text(self.display, self.rendom_qus, WHITE, 50, self.display.get_width() // 2, self.display.get_height() // 2 - 200, self.tamil_font)
             try:
                 self.display.blit(self.draw_images[-2], (self.viewing_value_one[0], self.viewing_value_one[1]))
@@ -292,7 +290,7 @@ class Display(object):
                 self.game_end()
             
             
-            self.currect_time = (pygame.time.get_ticks() // 1000)
+            self.currect_time = ((pygame.time.get_ticks() - self.start_time) // 1000)
             pygame.draw.rect(self.display, INFO_COLOR, (30, 10, 150, 30), border_radius=10)
             self.things.normal_text(self.display, "Neuk;: " + str(self.currect_time), WHITE, 25, 100, 25, self.tamil_font)
                 
